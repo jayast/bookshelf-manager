@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookshelf Manager // Blueprint Layout</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #16192b;
+            --card-bg: #1c2035;
+            --card-raised-shadow: 10px 10px 24px #101220, -10px -10px 24px #222644;
+            --input-sunken-shadow: inset 3px 3px 6px #101220, inset -3px -3px 6px #222644;
+            --accent: #ff6b4a;
+            --accent-hover: #ff522b;
+            --text-main: #f0f2fa;
+            --text-sub: #8d95b5;
+            --border-line: rgba(255, 255, 255, 0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Technical Blueprint Mesh Background */
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            background-image:
+                linear-gradient(rgba(255, 107, 74, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 107, 74, 0.05) 1px, transparent 1px),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 16px;
+        }
+
+        /* Floating Clay/Neumorphic Main Dashboard Frame */
+        .dashboard {
+            width: 100%;
+            max-width: 640px;
+            background: var(--card-bg);
+            border-radius: 24px;
+            box-shadow: var(--card-raised-shadow);
+            padding: 38px 34px;
+            border: 1px solid var(--border-line);
+            position: relative;
+        }
+
+        /* Header Bar */
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-line);
+        }
+
+        .badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--accent);
+            background: rgba(255, 107, 74, 0.12);
+            padding: 4px 10px;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-sub);
+            margin-bottom: 14px;
+        }
+
+        /* Form Section */
+        .form-wrapper {
+            background: rgba(16, 18, 32, 0.4);
+            border-radius: 16px;
+            padding: 22px;
+            margin-bottom: 32px;
+            border: 1px solid var(--border-line);
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-sub);
+            margin-bottom: 6px;
+        }
+
+        /* Inset/Sunken Form Fields */
+        input[type="text"] {
+            width: 100%;
+            background: #141727;
+            border: 1px solid transparent;
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: var(--text-main);
+            box-shadow: var(--input-sunken-shadow);
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        .btn-submit {
+            background: var(--accent);
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            padding: 11px 22px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(255, 107, 74, 0.35);
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-submit:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-cancel {
+            color: var(--text-sub);
+            font-size: 13px;
+            text-decoration: none;
+            margin-left: 14px;
+            font-weight: 600;
+        }
+
+        .btn-cancel:hover {
+            color: var(--text-main);
+        }
+
+        /* Book Feed */
+        .book-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .book-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 14px 18px;
+            border: 1px solid var(--border-line);
+            box-shadow: 4px 4px 10px #111322, -4px -4px 10px #232742;
+            transition: transform 0.15s ease;
+        }
+
+        .book-row:hover {
+            transform: scale(1.01);
+        }
+
+        .book-meta strong {
+            font-size: 15px;
+            font-weight: 700;
+            color: #ffffff;
+            display: block;
+        }
+
+        .book-meta span {
+            font-size: 13px;
+            color: var(--text-sub);
+        }
+
+        .actions-cluster {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .actions-cluster a {
+            color: #64b5f6;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: background 0.15s;
+        }
+
+        .actions-cluster a:hover {
+            background: rgba(100, 181, 246, 0.15);
+        }
+
+        .btn-delete {
+            background: transparent;
+            border: none;
+            color: #ef5350;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: background 0.15s;
+        }
+
+        .btn-delete:hover {
+            background: rgba(239, 83, 80, 0.15);
+        }
+
+        .empty-note {
+            text-align: center;
+            color: var(--text-sub);
+            font-size: 13px;
+            padding: 24px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard">
+        <div class="header-bar">
+            <h1>Bookshelf Manager</h1>
+            <span class="badge">PROJECT // BM</span>
+        </div>
+
+        <h2>
+            <%= editBook ? 'Edit Book Record' : 'Create Book' %>
+        </h2>
+        <div class="form-wrapper">
+            <form action="<%= editBook ? `/books/${editBook._id}?_method=PUT` : '/books' %>" method="POST">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" name="title" value="<%= editBook ? editBook.title : '' %>"
+                        placeholder="e.g. King" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Author</label>
+                    <input type="text" name="author" value="<%= editBook ? editBook.author : '' %>"
+                        placeholder="e.g. kohli" required>
+                </div>
+
+                <div style="margin-top: 18px; display: flex; align-items: center;">
+                    <button type="submit" class="btn-submit">
+                        <%= editBook ? 'Update Record' : 'Add Book' %>
+                    </button>
+                    <% if (editBook) { %>
+                        <a href="/" class="btn-cancel">Cancel</a>
+                        <% } %>
+                </div>
+            </form>
+        </div>
+
+        <h2>Book List</h2>
+        <div class="book-feed">
+            <% if (books.length===0) { %>
+                <div class="empty-note">No books in database. Use the form above to add one.</div>
+                <% } else { %>
+                    <% books.forEach(book=> { %>
+                        <div class="book-row">
+                            <div class="book-meta">
+                                <strong>
+                                    <%= book.title %>
+                                </strong>
+                                <span>by <%= book.author %></span>
+                            </div>
+                            <div class="actions-cluster">
+                                <a href="/?edit=<%= book._id %>">Edit</a>
+                                <form action="/books/<%= book._id %>?_method=DELETE" method="POST"
+                                    style="display:inline;">
+                                    <button type="submit" class="btn-delete">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                        <% }) %>
+                            <% } %>
+        </div>
+    </div>
+
+</body>
+
+</html>
